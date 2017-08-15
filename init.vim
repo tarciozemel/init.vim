@@ -2,6 +2,7 @@ call plug#begin('$HOME/.config/nvim/plugged')
 
 " @see https://www.gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'padawan-php/deoplete-padawan', { 'do': 'composer install' }
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
@@ -74,9 +75,25 @@ set encoding=utf-8
 " Change <Leader>
 let mapleader = ","
 
+" Use dash in autocomplete
+set iskeyword+=\-
+
 " Store swap files in fixed location, not current directory
 " http://stackoverflow.com/a/4331812/922143
 set dir=~/.config/nvim/swap//,/tmp//,.
+
+" Autocomplete
+    augroup omni_complete
+        " clear commands before resetting
+        autocmd!
+
+        " Enable omnicomplete for supported filetypes
+        autocmd FileType css,scss,sass setlocal omnifunc=csscomplete#CompleteCSS
+        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    augroup END
+
+    " Remap code completion to Ctrl+Space
+    " inoremap <Nul> <C-x><C-o>
 
 " Undo leves
 set history=300
@@ -180,7 +197,6 @@ colorscheme monokai
     " let g:deoplete#disable_auto_complete = 1
 
     " deoplete tab-complete
-    " inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
     inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<C-j>"
     inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<C-k>"
 

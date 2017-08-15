@@ -4,11 +4,6 @@ Com o [Neovim](https://neovim.io/) ficando cada vez mais estável, já chegamos 
 
 Dentre as opções para instalação simples de plugins, atualmente o que se está usando nesse mundão véio afora é o [Plug](https://github.com/junegunn/vim-plug). Veja as instruções de instalação aí na página e o resto é:
 
-<!-- 1. Copiar este fodendo arquivo de configuração para `$HOME/.config/nvim/`
-2. Criar a pasta `$HOME/.config/nvim/plugged`
-3. Colocar para instalar os plugins com `:PlugInstall` -->
-
-
 1. Clonar este fodendo repositório para algum lugar da sua máquina (e.g. `$HOME`)
 2. Criar um link simbólico do arquivo `init.vim` para `$HOME/.config/nvim/`
 3. Criar a pasta `$HOME/.config/nvim/plugged`
@@ -17,7 +12,7 @@ Dentre as opções para instalação simples de plugins, atualmente o que se est
 ``` bash
 cd $HOME
 git clone https://github.com/tarciozemel/init.vim
-ln -s $HOME/init.vim/init.vim $HOME/.config/nvim/init.vim
+ln -s ./init.vim/init.vim ./.config/nvim/init.vim
 ```
 
 Mas acha que vai ser tão fácil assim, _cabrón_? Se fosse, eu fazia com a esquerda.
@@ -37,6 +32,8 @@ Uma das partes mais chatinhas é referente ao combo **deoplete.nvim** (para auto
 * Instalar o Tern globalmente com `npm install -g tern`
 * Rodar um `npm install` em `$HOME/.config/nvim/plugged/tern_for_vim/`
 * (opcionalmente) Configurar seu `.tern-project` [conforme seja necessário](http://ternjs.net/doc/manual.html#configuration)
+
+Ah, e para funcionar o autocomplete de PHP direitinho, é preciso ter php5-cli e Composer instalados.
 
 **WakaTime** é o plugin de um serviço de mesmo nome que serve para marcar o tempo 
 em que se fica trabalhando em projetos. Para mais informações e para gerar a chave 
