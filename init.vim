@@ -3,9 +3,10 @@ call plug#begin('$HOME/.config/nvim/plugged')
 " @see https://www.gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'padawan-php/deoplete-padawan', { 'do': 'composer install' }
-Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx'] }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug '1995eaton/vim-better-javascript-completion'
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
@@ -17,12 +18,15 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'airblade/vim-gitgutter'
+Plug 'valloric/matchtagalways'
 Plug 'mattn/emmet-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
+Plug 'wesQ3/vim-windowswap'
 Plug 'crusoexia/vim-monokai'
+Plug 'mklabs/split-term.vim'
 Plug 'wakatime/vim-wakatime'
 call plug#end()
 
@@ -81,6 +85,9 @@ set iskeyword+=\-
 " Store swap files in fixed location, not current directory
 " http://stackoverflow.com/a/4331812/922143
 set dir=~/.config/nvim/swap//,/tmp//,.
+
+" Vertical splits open to the right
+set splitright
 
 " Autocomplete
     augroup omni_complete
